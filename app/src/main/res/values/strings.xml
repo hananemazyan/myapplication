@@ -1,0 +1,9 @@
+
+    <resources>
+        <string-array name="cities_array">
+            <item>Agadir</item>
+            <item>Casablanca</item>
+            <item>Fés</item>
+        </string-array>
+        <string name="My_Application" />
+    </resources>

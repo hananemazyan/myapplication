@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="green_200">#90FF94</color>
+<color name="orange_500">#F68865</color>
+<color name="grey">#DDDDDD</color>
+<color name="green02">#98A880</color>
+<color name="green01">#76885B</color>
+<color name="black">#FF000000</color>
+<color name="white">#FFFFFFFF</color>
+
+
+<color name="my_primary">#627254</color>
+<color name="my_secondary">#C15047</color>
+
+</resources>
