@@ -75,7 +75,7 @@ public class Activity_login extends AppCompatActivity {
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             // Navigate to another activity or perform other actions
             // For example, navigate to MainActivity
-            Intent intent = new Intent(Activity_login.this, Activity_main.class);
+            Intent intent = new Intent(Activity_login.this, MainActivity.class);
             startActivity(intent);
             finish(); // Finish the current activity
         } else {
