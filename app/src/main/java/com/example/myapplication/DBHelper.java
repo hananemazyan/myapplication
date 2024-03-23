@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -108,4 +109,22 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_ANNONCES, null, null, null, null, null, null);
     }
+
+    public int getAnnounceCountForCity(String selectedVille) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = COLUMN_VILLE + " = ?";
+        String[] selectionArgs = {selectedVille};
+        Cursor cursor = db.query(TABLE_ANNONCES, new String[]{"COUNT(*) AS count"}, selection,
+                selectionArgs, null, null, null);
+        int count = 0;
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(cursor.getColumnIndex("count"));
+            }
+            cursor.close();
+        }
+        return count;
+    }
+
+
 }

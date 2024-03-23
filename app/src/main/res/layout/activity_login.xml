@@ -54,7 +54,7 @@
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_text_border"
             android:hint="Votre adress email"
@@ -76,7 +76,7 @@
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_text_border"
             android:hint="Votre mot de passe"
@@ -123,7 +123,7 @@
     <CheckBox
         android:id="@+id/checkBoxSessionActive"
         android:layout_width="388dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_below="@id/loginForm"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -161,7 +161,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewCenter"
             android:layout_marginTop="16dp">
 
             <View
@@ -179,7 +178,6 @@
                 android:layout_marginStart="61dp"
                 android:layout_toEndOf="@id/circleView"
                 android:text="OU"
-                android:textColor="@color/my_secondary"
                 android:textSize="18sp" />
 
 
@@ -215,7 +213,7 @@
             android:textColor="#C15047"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:underline="true" />
+            />
 
     </LinearLayout>
 </RelativeLayout>

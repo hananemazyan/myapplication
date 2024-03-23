@@ -2,14 +2,14 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 //nous souhaitons afficher le nom de la ville et
 // le nombre d'annonces dans des TextView dans notre
 // activité ResultActivity
 
-class Result_Activity extends AppCompatActivity{
+class Result_Activity extends AppCompatActivity {
 
     private TextView textViewCityName;
     private TextView textViewAnnounceCount;
@@ -33,4 +33,4 @@ class Result_Activity extends AppCompatActivity{
     }
 
 
-
+}

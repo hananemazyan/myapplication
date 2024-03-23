@@ -113,7 +113,7 @@
     <Spinner
         android:id="@+id/spinner_categorie"
         android:layout_width="199dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -149,7 +149,7 @@
         android:layout_marginTop="295dp"
         android:background="@drawable/edit_text_border"
         android:entries="@array/secteurs"
-        android:prompt="Choisir_secteur" />
+       />
 
 
     <TextView
@@ -170,7 +170,7 @@
     <EditText
         android:id="@+id/editText_type_contrat"
         android:layout_width="190dp"
-        android:layout_height="34dp"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -229,7 +229,7 @@
     <Spinner
         android:id="@+id/spinner_ville"
         android:layout_width="224dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -283,7 +283,7 @@
             android:id="@+id/button_suivant"
             android:layout_width="107dp"
             android:layout_height="wrap_content"
-            android:background="#03A9F4"
+            android:background="#462088"
             android:text="Suivant"
             android:textColor="#FFFFFF" />
 
