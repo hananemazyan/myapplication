@@ -2,14 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/loginHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="-7dp"
-        android:background="#03D0F4"
-
+        android:background="@color/purple_500"
         android:orientation="horizontal"
         android:padding="1dp">
 
@@ -17,15 +17,15 @@
             android:id="@+id/textViewHead"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="Déposer une annonce"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,7 +83,7 @@
     <EditText
         android:id="@+id/editText_titre"
         android:layout_width="231dp"
-        android:layout_height="48dp"
+        android:layout_height="38dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -94,7 +94,7 @@
         android:layout_marginTop="171dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/edit_text_border" />
+        android:background="@drawable/edittext_border" />
 
     <TextView
         android:id="@+id/textView_categorie"
@@ -113,14 +113,14 @@
     <Spinner
         android:id="@+id/spinner_categorie"
         android:layout_width="199dp"
-        android:layout_height="48dp"
+        android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="169dp"
         android:layout_marginLeft="169dp"
         android:layout_marginTop="236dp"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/edittext_border"
         android:entries="@array/categories" />
 
     <TextView
@@ -140,16 +140,16 @@
     <Spinner
         android:id="@+id/spinner_secteur"
         android:layout_width="190dp"
-        android:layout_height="48dp"
+        android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="169dp"
         android:layout_marginLeft="169dp"
         android:layout_marginTop="295dp"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/edittext_border"
         android:entries="@array/secteurs"
-       />
+        android:prompt="Choisir_secteur" />
 
 
     <TextView
@@ -170,7 +170,7 @@
     <EditText
         android:id="@+id/editText_type_contrat"
         android:layout_width="190dp"
-        android:layout_height="48dp"
+        android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -182,7 +182,7 @@
         android:layout_marginTop="354dp"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
-        android:background="@drawable/edit_text_border" />
+        android:background="@drawable/edittext_border" />
 
     <TextView
         android:id="@+id/textView_description"
@@ -208,7 +208,7 @@
         android:layout_marginStart="171dp"
         android:layout_marginLeft="171dp"
         android:layout_marginBottom="195dp"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/edittext_border"
         android:lines="4" />
 
 
@@ -229,7 +229,7 @@
     <Spinner
         android:id="@+id/spinner_ville"
         android:layout_width="224dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -240,7 +240,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="136dp"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/edittext_border"
         android:entries="@array/villes"
         android:prompt="@string/choisir_ville" />
 
@@ -283,12 +283,9 @@
             android:id="@+id/button_suivant"
             android:layout_width="107dp"
             android:layout_height="wrap_content"
-            android:background="#462088"
+            android:background="#03A9F4"
             android:text="Suivant"
-            android:textColor="#FFFFFF"
-            android:onClick="creerAnnonce"
-            />
-
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </RelativeLayout>
