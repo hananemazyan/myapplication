@@ -1,36 +1,42 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
-//nous souhaitons afficher le nom de la ville et
-// le nombre d'annonces dans des TextView dans notre
-// activité ResultActivity
-
-class Result_Activity extends AppCompatActivity {
-
-    private TextView textViewCityName;
-    private TextView textViewAnnounceCount;
+public class Result_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_activity);
 
-        textViewCityName = findViewById(R.id.textView_city_name);
-        textViewAnnounceCount = findViewById(R.id.textView_announce_count);
+        // Récupérer la ville mentionnée dans le formulaire depuis l'intent
+        String ville = getIntent().getStringExtra("villementionee");
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String cityName = intent.getStringExtra("cityName");
-            int announceCount = intent.getIntExtra("announceCount", 0);
-
-            textViewCityName.setText(cityName);
-            textViewAnnounceCount.setText("Nombre d'annonces : " + announceCount);
-        }
+        // Afficher le nombre d'annonces pour la ville sélectionnée
+        afficherNombreAnnonces(ville);
     }
 
+    // Méthode pour afficher le nombre d'annonces pour une ville spécifique
+    private void afficherNombreAnnonces(String ville) {
+        // Vérifier si la ville est non nulle
+        if (ville != null) {
+            // Créer une instance de DatabaseHelper (remplacer DBHelper par le nom de votre classe DBHelper)
+            DBHelper db = new DBHelper(this);
 
+            // Obtenir le nombre d'annonces pour la ville spécifiée
+            int nombreAnnonces = db.compterAnnoncesPourVille(ville);
+
+            // Trouver le TextView dans le layout
+            TextView textViewAnnounceCount = findViewById(R.id.textView_announce_count);
+
+            // Afficher le nombre d'annonces dans le TextView
+            textViewAnnounceCount.setText("Nombre d'annonces pour " + ville + ": " + nombreAnnonces);
+        } else {
+            // Afficher un message d'erreur si la ville n'est pas spécifiée
+            TextView textViewAnnounceCount = findViewById(R.id.textView_announce_count);
+            textViewAnnounceCount.setText("Erreur: Aucune ville spécifiée");
+        }
+    }
 }

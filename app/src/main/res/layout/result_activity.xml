@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView_result_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Résultat"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView_result_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:text="Résultat"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/textView_result_title"
+        android:layout_marginTop="16dp"
+        android:background="#DFA2EA" />
 
-        <View
-            android:background="#DFA2EA"
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/textView_result_title"
-            android:layout_marginTop="16dp"
-            />
+    <TextView
+        android:id="@+id/textView_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="16dp"
+        android:text="Ville: "
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView_city_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/divider"
-            android:layout_marginTop="16dp"
-            android:text="Ville: "
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textView_announce_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_city_name"
+        android:layout_marginTop="16dp"
+        android:text="Nombre d'annonces: "
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView_announce_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView_city_name"
-            android:layout_marginTop="16dp"
-            android:text="Nombre d'annonces: "
-            android:textSize="18sp" />
-
-    </RelativeLayout>
-
+</RelativeLayout>

@@ -1,36 +1,17 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    // Database name and version
     private static final String DATABASE_NAME = "myapp.db";
     private static final int DATABASE_VERSION = 1;
-
-    // Table names
-    private static final String TABLE_USERS = "users";
-    private static final String TABLE_ANNONCES = "annonces";
-
-    // Common column names
-    private static final String COLUMN_ID = "_id";
-
-    // Users table column names
-    private static final String COLUMN_USERNAME = "username";
-    private static final String COLUMN_PASSWORD = "password";
-
-    // Annonces table column names
-    private static final String COLUMN_TITRE = "titre";
-    private static final String COLUMN_CATEGORIE = "categorie";
-    private static final String COLUMN_SECTEUR = "secteur";
-    private static final String COLUMN_TYPE_CONTRAT = "type_contrat";
-    private static final String COLUMN_DESCRIPTION = "description";
-    private static final String COLUMN_VILLE = "ville";
+    private static final String TAG = "DBHelper"; // Tag for logging
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,93 +19,88 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create users table
-        String createUserTableSQL = "CREATE TABLE " + TABLE_USERS + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_USERNAME + " TEXT," +
-                COLUMN_PASSWORD + " TEXT)";
-        db.execSQL(createUserTableSQL);
+        // Create the "users" table
+        String createUserTableQuery = "CREATE TABLE IF NOT EXISTS users ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "email TEXT, "
+                + "password TEXT)";
+        db.execSQL(createUserTableQuery);
+        Log.d(TAG, "Users table created"); // Log creation message
 
-        // Create annonces table
-        String createAnnoncesTableSQL = "CREATE TABLE " + TABLE_ANNONCES + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_TITRE + " TEXT," +
-                COLUMN_CATEGORIE + " TEXT," +
-                COLUMN_SECTEUR + " TEXT," +
-                COLUMN_TYPE_CONTRAT + " TEXT," +
-                COLUMN_DESCRIPTION + " TEXT," +
-                COLUMN_VILLE + " TEXT)";
-        db.execSQL(createAnnoncesTableSQL);
+        // Create the "Annonces" table
+        String createAnnoncesTableQuery = "CREATE TABLE IF NOT EXISTS Annonces ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "titre TEXT, "
+                + "categorie TEXT, "
+                + "secteur TEXT, "
+                + "type_contrat TEXT, "
+                + "description TEXT, "
+                + "ville TEXT)";
+        db.execSQL(createAnnoncesTableQuery);
+        Log.d(TAG, "Annonces table created"); // Log creation message
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older tables if existed and recreate them
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ANNONCES);
-        onCreate(db);
+        // Handle database upgrade if necessary
+        // You might add ALTER TABLE or other upgrade logic here
     }
 
-    // User Methods
-
-    public long addUser(String username, String password) {
+    // Methods to manage users
+    public void ajouterUtilisateur(String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USERNAME, username);
-        values.put(COLUMN_PASSWORD, password);
-        long result = db.insert(TABLE_USERS, null, values);
+        values.put("email", email);
+        values.put("password", password);
+        long newRowId = db.insert("users", null, values);
         db.close();
-        return result;
+        Log.d(TAG, "New user inserted with ID: " + newRowId); // Log insertion message
     }
 
-    public boolean checkUser(String username, String password) {
+    public boolean verifierConnexion(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_ID};
-        String selection = COLUMN_USERNAME + " = ? AND " + COLUMN_PASSWORD + " = ?";
-        String[] selectionArgs = {username, password};
-        Cursor cursor = db.query(TABLE_USERS, columns, selection, selectionArgs,
+        Cursor cursor = db.query("users", new String[]{"username", "password"},
+                "username = ? AND password = ?", new String[]{username, password},
                 null, null, null);
         int count = cursor.getCount();
         cursor.close();
+        Log.d(TAG, "Verification result count: " + count); // Log verification result
         return count > 0;
     }
 
-    // Annonces Methods
+    // Method to insert sample user data
+    public void populateUsersTable() {
+        ajouterUtilisateur("user1@example.com", "password1");
+        ajouterUtilisateur("user2@example.com", "password2");
 
-    public long insertAnnonce(String titre, String categorie, String secteur, String typeContrat, String description, String ville) {
+    }
+
+    // Method to add an annonce
+    public void ajouterAnnonce(String titre, String categorie, String secteur, String typeContrat, String description, String ville) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TITRE, titre);
-        values.put(COLUMN_CATEGORIE, categorie);
-        values.put(COLUMN_SECTEUR, secteur);
-        values.put(COLUMN_TYPE_CONTRAT, typeContrat);
-        values.put(COLUMN_DESCRIPTION, description);
-        values.put(COLUMN_VILLE, ville);
-        long result = db.insert(TABLE_ANNONCES, null, values);
+        values.put("titre", titre);
+        values.put("categorie", categorie);
+        values.put("secteur", secteur);
+        values.put("typeContrat", typeContrat);
+        values.put("description", description);
+        values.put("ville", ville);
+        long newRowId = db.insert("Annonces", null, values);
         db.close();
-        return result;
+        Log.d(TAG, "New annonce inserted with ID: " + newRowId); // Log insertion message
     }
 
-    public Cursor getAllAnnonces() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_ANNONCES, null, null, null, null, null, null);
-    }
+    // Method to insert sample Annonces data
 
-    public int getAnnounceCountForCity(String selectedVille) {
+    public int compterAnnoncesPourVille(String ville) {
+        int nombreAnnonces = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_VILLE + " = ?";
-        String[] selectionArgs = {selectedVille};
-        Cursor cursor = db.query(TABLE_ANNONCES, new String[]{"COUNT(*) AS count"}, selection,
-                selectionArgs, null, null, null);
-        int count = 0;
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                count = cursor.getInt(cursor.getColumnIndex("count"));
+        try (Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM Annonces WHERE ville=?", new String[]{ville})) {
+            if (cursor != null && cursor.moveToFirst()) {
+                nombreAnnonces = cursor.getInt(0);
             }
-            cursor.close();
         }
-        return count;
+        return nombreAnnonces;
     }
-
-
 }

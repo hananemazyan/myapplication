@@ -285,7 +285,10 @@
             android:layout_height="wrap_content"
             android:background="#462088"
             android:text="Suivant"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:onClick="creerAnnonce"
+            />
+
 
     </LinearLayout>
 </RelativeLayout>
