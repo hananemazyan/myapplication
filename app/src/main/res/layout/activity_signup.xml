@@ -1,242 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?>
+?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Header Section -->
-    <LinearLayout
-        android:id="@+id/loginHeader"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/purple_500"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:id="@+id/textViewConexion"
+        android:text="Connexion"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_margin="50dp"
+        android:gravity="center"/>
 
-
-        <!-- Text Info -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewMarche"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VOUS serez le plus proche au marché de travail"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textViewFree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="C'est gratuit"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <!-- Divider Line -->
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/darker_gray" />
-
-    </LinearLayout>
-
-    <!-- User Type Selection -->
-    <LinearLayout
-        android:id="@+id/layoutVousEtes"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginHeader"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:id="@+id/editTextEmail"
+        android:layout_below="@id/textViewConexion"
+        android:background="#30ffffff"
+        android:hint="E-mail"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp"/>
 
-        <TextView
-            android:id="@+id/textViewVousEtes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vous êtes :"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroupVousEtes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/radioButtonRecruteur"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Recruteur - cherche des CV et pose des annonces de travail"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/radioButtonCandidat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Candidat - cherche des annonces et pose des CV"
-                android:textSize="13sp" />
-
-        </RadioGroup>
-    </LinearLayout>
-
-    <!-- Input Fields Section -->
-    <LinearLayout
-        android:id="@+id/linearLayoutInputs"
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="306dp"
-        android:layout_below="@id/layoutVousEtes"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextPassword"
+        android:layout_below="@id/editTextEmail"
+        android:background="#30ffffff"
+        android:hint="Mot de Passe"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
 
-        <!-- Email Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/buttonSeConnecter"
+        android:layout_width="203dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="Se Connecter"></Button>
 
-            <TextView
-                android:id="@+id/textViewEmail"
-                android:layout_width="93dp"
-                android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/editTextEmail"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/edit_text_border"
-                android:hint="Votre adresse email"
-                android:padding="8dp" />
-        </LinearLayout>
-
-        <!-- Ville Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textViewVille"
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:text="Ville:"
-                android:textSize="16sp" />
-
-            <Spinner
-                android:id="@+id/spinnerVille"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/edit_text_border"
-                android:padding="8dp" />
-        </LinearLayout>
-
-        <!-- Password Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textViewPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mot de passe:"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/editTextPassword"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/edit_text_border"
-                android:hint="Votre mot de passe"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="9dp" />
-
-        </LinearLayout>
-
-        <!-- Confirm Password Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textViewRewritePassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirmez le mot de passe:"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/editViewRewritePassword"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/edit_text_border"
-                android:hint="Confirmez votre mot de passe"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="9dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- Password Strength Guidance -->
-
-    <!-- Divider Line -->
 
     <TextView
-        android:id="@+id/textViewPasswordGuidance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewForgotPassword"
+        android:layout_below="@id/buttonSeConnecter"
+        android:text="Mot de passe oublié?"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"/>
+    <!-- Signup Section -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutInputs"
-        android:layout_marginTop="88dp"
-        android:text="Choisissez un mot de passe qui n'est pas facile à deviner (au moins 5 caractères)"
-        android:textSize="16sp" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="57dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="32dp">
 
-    <View
-        android:id="@+id/dividerLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/textViewPasswordGuidance"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray" />
+        <TextView
+            android:id="@+id/textViewNoAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vous n'avez pas encore de compte?"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-    <!-- Button -->
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dividerLine"
-        android:layout_marginTop="51dp"
-        android:text="Créer un Compte"
-        android:onClick="creerCompte"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/textViewSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="inscrire"
+            android:text="Inscrivez-vous ici"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>
+
+       
+      
+
+      
+          
+              
+
+            
+
+
+           
+          
+               
+         
+            
+
+    
+
+    
+       
